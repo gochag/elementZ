@@ -2,11 +2,9 @@
 name: ElementX
 attributes:
   ORGANIZATIONNAME: Element
-
 fileGroups:
 - project.yml
 - app.yml
-
 options:
   groupSortPosition: bottom
   createIntermediateGroups: true
@@ -44,9 +42,8 @@ options:
     - AccessibilityTests
   fileTypes:
     icon:
-      file: true # https://github.com/yonaskolb/XcodeGen/issues/1556
+      file: true
   postGenCommand: cd Tools/XcodeGen && sh postGenCommand.sh
-
 settings:
   CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: true
   ENABLE_BITCODE: false
@@ -55,7 +52,6 @@ settings:
   MARKETING_VERSION: 26.02.1
   CURRENT_PROJECT_VERSION: 1
   SUPPORTS_MACCATALYST: false
-
 include:
 - path: app.yml
 - path: ElementX/SupportingFiles/target.yml
@@ -67,37 +63,28 @@ include:
 - path: UITests/SupportingFiles/target.yml
 - path: IntegrationTests/SupportingFiles/target.yml
 - path: AccessibilityTests/SupportingFiles/target.yml
-# - path: MyAppVariant/override.yml
-
+- path: Variants/Nightly/nightly.yml
 packages:
-  # Element/Matrix dependencies
   MatrixRustSDK:
     url: https://github.com/element-hq/matrix-rust-components-swift
     exactVersion: 26.01.27
-    # path: ../matrix-rust-sdk
   Compound:
     path: compound-ios
   AnalyticsEvents:
     url: https://github.com/matrix-org/matrix-analytics-events
     minorVersion: 0.30.0
-    # path: ../matrix-analytics-events
   EmbeddedElementCall:
     url: https://github.com/element-hq/element-call-swift
     exactVersion: 0.16.3
   Emojibase:
     url: https://github.com/matrix-org/emojibase-bindings
     minorVersion: 1.5.0
-    # path: ../emojibase-bindings
   SwiftOGG:
     url: https://github.com/element-hq/swift-ogg
     minorVersion: 0.0.3
-    # path: ../swift-ogg
   WysiwygComposer:
     url: https://github.com/element-hq/matrix-rich-text-editor-swift
     exactVersion: 2.41.0
-    # path: ../matrix-rich-text-editor/platforms/ios/lib/WysiwygComposer
-  
-  # External dependencies
   Algorithms:
     url: https://github.com/apple/swift-algorithms
     minorVersion: 1.2.1
@@ -158,7 +145,6 @@ packages:
   Version:
     url: https://github.com/mxcl/Version
     minorVersion: 2.2.0
-
 aggregateTargets:
   Periphery:
     buildScripts:

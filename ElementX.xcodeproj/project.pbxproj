@@ -862,6 +862,7 @@
 		9462C62798F47E39DCC182D2 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89A2DD51B6BBE1DA55E263 /* Application.swift */; };
 		94871CA883F44022086FE750 /* AuthenticationStartLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98784280D98C852727BE0111 /* AuthenticationStartLogo.swift */; };
 		94A65DD8A353DF112EBEF67A /* SessionVerificationControllerProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D56469A9EE0CFA2B7BA9760 /* SessionVerificationControllerProxyProtocol.swift */; };
+		94AC70A86168DE55C34D8D72 /* NightlyAppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 0E62D9AD06A490BDD2C1E700 /* NightlyAppIcon.icon */; };
 		94C2B531B96493B68B976E5F /* SpaceServiceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A56746AD99ABDA97189E1 /* SpaceServiceProxy.swift */; };
 		94D0F36A87E596A93C0C178A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E89E530A8E92EC44301CA1 /* Bundle.swift */; };
 		94D9172C4B91FC6971C668CE /* LeaveSpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4B7AD74E402BBC46A801A /* LeaveSpaceView.swift */; };
@@ -964,6 +965,7 @@
 		A4E885358D7DD5A072A06824 /* SwiftState in Frameworks */ = {isa = PBXBuildFile; productRef = 3853B78FB8531B83936C5DA6 /* SwiftState */; };
 		A51C65E5A3C9F2464A91A380 /* AuthenticationClientBuilderFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0554FEA301486A8CFA475D5A /* AuthenticationClientBuilderFactoryMock.swift */; };
 		A52090A4FE0DB826578DFC03 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0724EBDFE8BB4C9E5547C57D /* Client.swift */; };
+		A52DE51180AAA37A142C5CAA /* Nightly.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278E6B81B5DB86FF9D5016A7 /* Nightly.xcassets */; };
 		A583B70939707197B0B21DFC /* DeferredFulfillmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBB74427E24AF30CDB131B7 /* DeferredFulfillmentTests.swift */; };
 		A588572ED0EB18D947B32A5E /* SendInviteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276F31C1AEC19E52B951B62 /* SendInviteConfirmationView.swift */; };
 		A5B455D1A6DADF7476F7B417 /* EmojiProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCE3D12B0A9C6E559B5B5A /* EmojiProviderProtocol.swift */; };
@@ -1631,6 +1633,7 @@
 		0D8F620C8B314840D8602E3F /* NSE.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = NSE.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DBB08A95EFA668F2CF27211 /* AppLockSetupFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockSetupFlowCoordinator.swift; sourceTree = "<group>"; };
 		0DF5CBAF69BDF5DF31C661E1 /* IntentionalMentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentionalMentions.swift; sourceTree = "<group>"; };
+		0E62D9AD06A490BDD2C1E700 /* NightlyAppIcon.icon */ = {isa = PBXFileReference; path = NightlyAppIcon.icon; sourceTree = "<group>"; };
 		0E8BDC092D817B68CD9040C5 /* UserSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionStore.swift; sourceTree = "<group>"; };
 		0E95B3BDB80531C85CD50AE6 /* InvitedRoomProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedRoomProxy.swift; sourceTree = "<group>"; };
 		0EE9EAF0309A2A1D67D8FAF5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = sv; path = sv.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -1782,6 +1785,7 @@
 		2757B1BE23DF8AA239937243 /* AudioConverterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioConverterProtocol.swift; sourceTree = "<group>"; };
 		276833816F5DEB1CE3B8BE1E /* ReportRoomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRoomScreen.swift; sourceTree = "<group>"; };
 		277C20CDD5B64510401B6D0D /* ServerConfigurationScreenViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfigurationScreenViewStateTests.swift; sourceTree = "<group>"; };
+		278E6B81B5DB86FF9D5016A7 /* Nightly.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Nightly.xcassets; sourceTree = "<group>"; };
 		27A1AD6389A4659AF0CEAE62 /* NotificationServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceExtension.swift; sourceTree = "<group>"; };
 		27A5FBB74981BF8EFFDAE90D /* HTMLFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLFixtures.swift; sourceTree = "<group>"; };
 		27A9E3FBE8A66B5A17AD7F74 /* AppRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoutes.swift; sourceTree = "<group>"; };
@@ -3174,6 +3178,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		08D59F5B8772832EA15E9632 /* Nightly */ = {
+			isa = PBXGroup;
+			children = (
+				E306417AD84F3494590F46B1 /* Resources */,
+			);
+			path = Nightly;
+			sourceTree = "<group>";
+		};
 		09C599CB430ABF160C1EE55C /* AnalyticsSettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -3997,6 +4009,7 @@
 				2197234282B4BC0CE79AAC74 /* Secrets */,
 				823ED0EC3F1B6CF47D284011 /* Tools */,
 				9413F680ECDFB2B0DDB0DEF2 /* Packages */,
+				642F7A90031D9C1AC5915443 /* Variants */,
 				681566846AF307E9BA4C72C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -4570,6 +4583,14 @@
 				DD3C65634A34467CB407A061 /* target.yml */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		642F7A90031D9C1AC5915443 /* Variants */ = {
+			isa = PBXGroup;
+			children = (
+				08D59F5B8772832EA15E9632 /* Nightly */,
+			);
+			path = Variants;
 			sourceTree = "<group>";
 		};
 		6709362D60732DED2069AE0F /* MediaPlayer */ = {
@@ -6436,6 +6457,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		E306417AD84F3494590F46B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				278E6B81B5DB86FF9D5016A7 /* Nightly.xcassets */,
+				0E62D9AD06A490BDD2C1E700 /* NightlyAppIcon.icon */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E4E42F93A69AE52E6FAE9412 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -7268,6 +7298,8 @@
 				B6DA66EFC13A90846B625836 /* InfoPlist.strings in Resources */,
 				5F5488FBC9CFEB6F433D74A4 /* Localizable.strings in Resources */,
 				0EA6537A07E2DC882AEA5962 /* Localizable.stringsdict in Resources */,
+				A52DE51180AAA37A142C5CAA /* Nightly.xcassets in Resources */,
+				94AC70A86168DE55C34D8D72 /* NightlyAppIcon.icon in Resources */,
 				8B408C574E35E1C9B43A50CE /* PrivacyInfo.xcprivacy in Resources */,
 				C3317EF833AB4060988DF098 /* SAS.strings in Resources */,
 				5FCD8AFA364206EE32B909A3 /* Settings.bundle in Resources */,
@@ -9241,7 +9273,7 @@
 		62E1B7866DF0ED442C39A83B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NightlyAppIcon;
 				CODE_SIGN_ENTITLEMENTS = ElementX/SupportingFiles/ElementX.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
@@ -9273,7 +9305,7 @@
 		6897D5BC19A2EA6ABD57DE7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NightlyAppIcon;
 				CODE_SIGN_ENTITLEMENTS = ElementX/SupportingFiles/ElementX.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
@@ -9346,10 +9378,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APP_DISPLAY_NAME = "Element X";
-				APP_GROUP_IDENTIFIER = group.io.element;
+				APP_GROUP_IDENTIFIER = group.io.element.nightly;
 				APP_NAME = ElementX;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "colors/accent-color";
-				BASE_BUNDLE_IDENTIFIER = io.element.elementx;
+				BASE_BUNDLE_IDENTIFIER = io.element.elementx.nightly;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -9416,10 +9448,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APP_DISPLAY_NAME = "Element X";
-				APP_GROUP_IDENTIFIER = group.io.element;
+				APP_GROUP_IDENTIFIER = group.io.element.nightly;
 				APP_NAME = ElementX;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "colors/accent-color";
-				BASE_BUNDLE_IDENTIFIER = io.element.elementx;
+				BASE_BUNDLE_IDENTIFIER = io.element.elementx.nightly;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
