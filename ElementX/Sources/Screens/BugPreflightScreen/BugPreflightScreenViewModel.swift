@@ -21,8 +21,8 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     init(with param: BugPreflightScreenCoordinatorParameters) {
         let bindings = BugPreflightScreenViewStateBindings(reportText: "")
         let state = BugPreflightScreenViewState(bindings: bindings)
-        self.diagnosticsProviding = param.diagnosticsProviding
-        self.textRedacting = param.textRedacting
+        diagnosticsProviding = param.diagnosticsProviding
+        textRedacting = param.textRedacting
         
         super.init(initialViewState: state)
     }

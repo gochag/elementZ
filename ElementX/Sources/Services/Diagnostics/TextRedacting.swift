@@ -12,7 +12,6 @@ protocol TextRedacting {
 }
 
 final class PrivacyRedactor: TextRedacting {
-    
     // MARK: - Placeholders
     
     private enum Placeholder {
@@ -46,11 +45,9 @@ final class PrivacyRedactor: TextRedacting {
         }
         
         let range = NSRange(text.startIndex..., in: text)
-        return regex.stringByReplacingMatches(
-            in: text,
-            options: [],
-            range: range,
-            withTemplate: replacement
-        )
+        return regex.stringByReplacingMatches(in: text,
+                                              options: [],
+                                              range: range,
+                                              withTemplate: replacement)
     }
 }

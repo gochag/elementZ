@@ -14,18 +14,16 @@ protocol DiagnosticsProviding {
 
 final class SystemDiagnosticsProvider: DiagnosticsProviding {
     func collectDiagnostics() async throws -> DeviceDiagnostics {
-        DeviceDiagnostics(
-            appVersion: appVersion,
-            deviceModel: deviceModel,
-            osVersion: osVersion,
-            locale: locale,
-            timestamp: Date(),
-            matrixSDKVersion: nil,
-            homeserver: nil
-        )
+        DeviceDiagnostics(appVersion: appVersion,
+                          deviceModel: deviceModel,
+                          osVersion: osVersion,
+                          locale: locale,
+                          timestamp: Date(),
+                          matrixSDKVersion: nil,
+                          homeserver: nil)
     }
     
-    //MARK: Private function
+    // MARK: Private function
     
     private var appVersion: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
@@ -52,6 +50,3 @@ final class SystemDiagnosticsProvider: DiagnosticsProviding {
         Locale.current.identifier
     }
 }
-
-
-
