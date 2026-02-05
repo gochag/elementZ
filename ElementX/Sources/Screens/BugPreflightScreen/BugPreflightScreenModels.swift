@@ -7,11 +7,8 @@
 
 import Foundation
 
-enum BugPreflightScreenViewModelAction {
-}
+enum BugPreflightScreenViewModelAction { }
 
-struct BugPreflightScreenViewState: BindableState {
-}
+struct BugPreflightScreenViewState: BindableState { }
 
-enum  BugPreflightScreenViewActions {
-}
+enum BugPreflightScreenViewActions { }

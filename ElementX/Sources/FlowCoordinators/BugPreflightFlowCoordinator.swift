@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-struct BugPreflightFlowCoordinatorParameters {
+enum BugPreflightFlowCoordinatorParameters {
     enum PresentationMode {
         case sheet(NavigationStackCoordinator)
         case push(NavigationStackCoordinator)
@@ -29,31 +29,27 @@ class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
     }
 
     func start(animated: Bool) {
-        self.presentBugReportScreen()
+        presentBugReportScreen()
     }
     
-    func handleAppRoute(_ appRoute: AppRoute, animated: Bool) {
-        
-    }
+    func handleAppRoute(_ appRoute: AppRoute, animated: Bool) { }
     
-    func clearRoute(animated: Bool) {
-        
-    }
+    func clearRoute(animated: Bool) { }
     
     private func presentBugReportScreen() {
         let params = BugPreflightScreenCoordinator(parameters: .init(hideProfiles: true))
         let coordinator = BugPreflightScreenCoordinator(parameters: .init(hideProfiles: true))
-        coordinator.actions.sink { [weak self] action in
+        coordinator.actions.sink { [weak self] _ in
             guard let self else { return }
             
 //            switch action {
 //            case .cancel:
 //                dismiss()
 //            case .viewLogs:
-////                presentLogViewerScreen()
+            ////                presentLogViewerScreen()
 //                dismiss()
 //            case .finish:
-////                showSuccess(label: L10n.actionDone)
+            ////                showSuccess(label: L10n.actionDone)
 //                dismiss()
 //            }
         }

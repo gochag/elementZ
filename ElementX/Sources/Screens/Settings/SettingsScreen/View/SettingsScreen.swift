@@ -177,8 +177,8 @@ struct SettingsScreen: View {
                 ListRow(label: .default(title: L10n.commonReportAProblem,
                                         icon: \.chatProblem),
                         kind: .navigationLink {
-                          context.send(viewAction: .reportBugPreflight)
-                })
+                            context.send(viewAction: .reportBugPreflight)
+                        })
             }
             
             if context.viewState.showAnalyticsSettings {
