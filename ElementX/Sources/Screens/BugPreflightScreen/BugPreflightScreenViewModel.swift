@@ -45,16 +45,16 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
             let deviceID = clientProxy.deviceID
             
             let text = """
-                [user] \(user)
-                [homeserver] \(homeserver)
-                [deviceID] \(deviceID)
-                
-                [Device] \(result.deviceModel)
-                [OS Version]: \(result.osVersion)
-                [Locale]: \(result.locale)
-                [App Version]: \(result.appVersion)
-                [Timestamp]: \(result.formatted())
-                """
+            [user] \(user)
+            [homeserver] \(homeserver)
+            [deviceID] \(deviceID)
+            
+            [Device] \(result.deviceModel)
+            [OS Version]: \(result.osVersion)
+            [Locale]: \(result.locale)
+            [App Version]: \(result.appVersion)
+            [Timestamp]: \(result.formatted())
+            """
             state.bindings.diagnosticText = text
         }
     }

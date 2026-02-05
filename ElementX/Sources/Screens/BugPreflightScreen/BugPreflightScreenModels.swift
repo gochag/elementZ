@@ -14,11 +14,11 @@ struct BugPreflightScreenViewState: BindableState {
 }
 
 struct BugPreflightScreenViewStateBindings {
-    var summary: String = ""
-    var steps: String = ""
-    var expectedResults: String = ""
-    var actualResult: String = ""
-    var diagnosticText: String = ""
+    var summary = ""
+    var steps = ""
+    var expectedResults = ""
+    var actualResult = ""
+    var diagnosticText = ""
     var deviceDiagnostics: DeviceDiagnostics?
 }
 
