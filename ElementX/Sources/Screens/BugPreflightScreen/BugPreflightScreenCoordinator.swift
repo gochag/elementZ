@@ -10,7 +10,6 @@ import SwiftUI
 
 enum BugPreflightScreenCoordinatorAction {
     case cancel
-    case viewLogs
     case finish
 }
 
@@ -23,8 +22,8 @@ final class BugPreflightScreenCoordinator: CoordinatorProtocol {
     private var viewModel: BugPreflightScreenViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    private let actionsSubject: PassthroughSubject<BugReportScreenCoordinatorAction, Never> = .init()
-    var actions: AnyPublisher<BugReportScreenCoordinatorAction, Never> {
+    private let actionsSubject: PassthroughSubject<BugPreflightScreenCoordinatorAction, Never> = .init()
+    var actions: AnyPublisher<BugPreflightScreenCoordinatorAction, Never> {
         actionsSubject.eraseToAnyPublisher()
     }
     

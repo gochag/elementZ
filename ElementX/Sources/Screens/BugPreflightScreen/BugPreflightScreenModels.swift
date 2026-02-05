@@ -9,6 +9,12 @@ import Foundation
 
 enum BugPreflightScreenViewModelAction { }
 
-struct BugPreflightScreenViewState: BindableState { }
+struct BugPreflightScreenViewState: BindableState {
+    var bindings: BugPreflightScreenViewStateBindings
+}
+
+struct BugPreflightScreenViewStateBindings {
+    var reportText: String
+}
 
 enum BugPreflightScreenViewActions { }

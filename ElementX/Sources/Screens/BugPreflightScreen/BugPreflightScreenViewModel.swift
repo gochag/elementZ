@@ -17,6 +17,8 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     }
     
     init() {
-        super.init(initialViewState: BugPreflightScreenViewState())
+        let bindings = BugPreflightScreenViewStateBindings(reportText: "")
+        let state = BugPreflightScreenViewState(bindings: bindings)
+        super.init(initialViewState: state)
     }
 }

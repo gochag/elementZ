@@ -12,8 +12,116 @@ struct BugPreflightScreen: View {
     @Bindable var context: BugPreflightScreenViewModel.Context
     
     var body: some View {
-        VStack {
-            Text("BugPreflightScreen")
+        Form {
+            summarySection
+            stepsToReproduceSection
+            expectedSection
+            actualResultSection
+            diagnosticLogsSection
+            buttonSection
+        }
+        .scrollDismissesKeyboard(.immediately)
+        .compoundList()
+        .navigationTitle(L10n.commonReportAProblem)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar { toolbar }
+        .interactiveDismissDisabled()
+    }
+    
+    private var summarySection: some View {
+        Section {
+            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                .lineLimit(4, reservesSpace: true)
+                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
+        } header: {
+            Text("Summary")
+                .compoundListSectionHeader()
+        } footer: {
+            Text(L10n.screenBugReportEditorDescription)
+                .compoundListSectionFooter()
+        }
+    }
+    
+    private var stepsToReproduceSection: some View {
+        Section {
+            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+                    kind: .textField(text: $context.reportText, axis: .vertical))
+                .lineLimit(4, reservesSpace: true)
+                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
+        } header: {
+            Text("Steps to Reproduce")
+                .compoundListSectionHeader()
+        } footer: {
+            Text(L10n.screenBugReportEditorDescription)
+                .compoundListSectionFooter()
+        }
+    }
+    
+    private var expectedSection: some View {
+        Section {
+            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                .lineLimit(4, reservesSpace: true)
+                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
+        } header: {
+            Text("Expected Result")
+                .compoundListSectionHeader()
+        } footer: {
+            Text(L10n.screenBugReportEditorDescription)
+                .compoundListSectionFooter()
+        }
+    }
+    
+    private var actualResultSection: some View {
+        Section {
+            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                .lineLimit(4, reservesSpace: true)
+                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
+        } header: {
+            Text("Actual Result")
+                .compoundListSectionHeader()
+        } footer: {
+            Text(L10n.screenBugReportEditorDescription)
+                .compoundListSectionFooter()
+        }
+    }
+    
+    private var diagnosticLogsSection: some View {
+        Section {
+            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+                    kind: .label)
+                .lineLimit(4, reservesSpace: true)
+                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
+        } header: {
+            Text("Diagnostics")
+                .compoundListSectionHeader()
+        }
+    }
+    
+    private var buttonSection: some View {
+        Section {
+            ListRow(label: .action(title: "Share", systemIcon: .squareAndArrowUp),
+                    kind: .button(action: {
+                        MXLog.debug("Share")
+                    }))
+            
+            ListRow(label: .action(title: "Copy", systemIcon: .documentOnDocument),
+                    kind: .button(action: {
+                        MXLog.debug("Copy")
+                    }))
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .confirmationAction) {
+            Button(L10n.actionSend) {
+//                context.send(viewAction: .submit)
+            }
+            .disabled(context.reportText.count < 5)
+//            .disabled(context.viewState.shouldDisableInteraction)
         }
     }
 }
