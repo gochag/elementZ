@@ -27,6 +27,8 @@ class SettingsFlowCoordinator: FlowCoordinatorProtocol {
     // periphery:ignore - retaining purpose
     private var bugReportFlowCoordinator: BugReportFlowCoordinator?
     // periphery:ignore - retaining purpose
+    private var bugPreflightFlowCoordinator: BugPreflightFlowCoordinator?
+    // periphery:ignore - retaining purpose
     private var encryptionSettingsFlowCoordinator: EncryptionSettingsFlowCoordinator?
     // periphery:ignore - retaining purpose
     private var linkNewDeviceFlowCoordinator: LinkNewDeviceFlowCoordinator?
@@ -99,6 +101,11 @@ class SettingsFlowCoordinator: FlowCoordinatorProtocol {
                                                                                           bugReportService: flowParameters.bugReportService,
                                                                                           userSession: flowParameters.userSession))
                     bugReportFlowCoordinator?.start()
+                        
+                case .bugPreflight:
+                    bugPreflightFlowCoordinator = BugPreflightFlowCoordinator(parameters: .init())
+                    bugPreflightFlowCoordinator?.start()
+                        
                 case .about:
                     presentLegalInformationScreen()
                 case .blockedUsers:

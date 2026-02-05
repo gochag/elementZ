@@ -23,6 +23,7 @@ enum SettingsScreenCoordinatorAction {
     case analytics
     case appLock
     case bugReport
+    case bugPreflight
     case about
     case blockedUsers
     case linkNewDevice
@@ -88,6 +89,8 @@ final class SettingsScreenCoordinator: CoordinatorProtocol {
                     actionsSubject.send(.logout)
                 case .deactivateAccount:
                     actionsSubject.send(.deactivateAccount)
+                case .reportBugPreflight:
+                    actionsSubject.send(.bugPreflight)
                 }
             }
             .store(in: &cancellables)

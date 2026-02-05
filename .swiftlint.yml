@@ -26,6 +26,7 @@ line_length:
 
 file_length:
   warning: 2000
+  error: 3000
 
 type_name:
   min_length: 3

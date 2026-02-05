@@ -128,6 +128,8 @@ class SettingsScreenViewModel: SettingsScreenViewModelType, SettingsScreenViewMo
             actionsSubject.send(.developerOptions)
         case .deactivateAccount:
             actionsSubject.send(.deactivateAccount)
+        case .reportBugPreflight:
+            actionsSubject.send(.reportBugPreflight)
         }
     }
 }
