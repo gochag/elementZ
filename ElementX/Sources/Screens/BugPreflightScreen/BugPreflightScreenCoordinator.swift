@@ -14,6 +14,7 @@ enum BugPreflightScreenCoordinatorAction {
 }
 
 struct BugPreflightScreenCoordinatorParameters {
+    let clientProxy: ClientProxyProtocol
     let diagnosticsProviding: DiagnosticsProviding
     let textRedacting: TextRedacting
 }

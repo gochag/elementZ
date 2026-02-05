@@ -20,6 +20,7 @@ struct BugPreflightFlowCoordinatorParameters {
     }
 
     let presentationMode: PresentationMode
+    let clientProxy: ClientProxyProtocol
 }
 
 class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
@@ -49,7 +50,9 @@ class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
         let textRedacting = PrivacyRedactor()
         let diagnosticsProviding = SystemDiagnosticsProvider()
         
-        let params = BugPreflightScreenCoordinatorParameters(diagnosticsProviding: diagnosticsProviding, textRedacting: textRedacting)
+        let params = BugPreflightScreenCoordinatorParameters(clientProxy: parameters.clientProxy,
+                                                             diagnosticsProviding: diagnosticsProviding,
+                                                             textRedacting: textRedacting)
         
         let coordinator = BugPreflightScreenCoordinator(parameters: params)
         coordinator.actions.sink { [weak self] action in

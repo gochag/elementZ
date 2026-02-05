@@ -103,7 +103,9 @@ class SettingsFlowCoordinator: FlowCoordinatorProtocol {
                     bugReportFlowCoordinator?.start()
                         
                 case .bugPreflight:
-                    let parameters = BugPreflightFlowCoordinatorParameters(presentationMode: .push(navigationStackCoordinator))
+                        let parameters = BugPreflightFlowCoordinatorParameters(
+                            presentationMode: .push(navigationStackCoordinator),
+                            clientProxy: flowParameters.userSession.clientProxy)
                             
                     bugPreflightFlowCoordinator = BugPreflightFlowCoordinator(parameters: parameters)
                     bugPreflightFlowCoordinator?.start()

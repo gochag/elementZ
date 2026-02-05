@@ -31,9 +31,8 @@ struct BugPreflightScreen: View {
     private var summarySection: some View {
         Section {
             ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
-                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                    kind: .textField(text: $context.summary, axis: .horizontal))
                 .lineLimit(4, reservesSpace: true)
-                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
             Text("Summary")
                 .compoundListSectionHeader()
@@ -46,54 +45,42 @@ struct BugPreflightScreen: View {
     private var stepsToReproduceSection: some View {
         Section {
             ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
-                    kind: .textField(text: $context.reportText, axis: .vertical))
+                    kind: .textField(text: $context.steps, axis: .vertical))
                 .lineLimit(4, reservesSpace: true)
-                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
             Text("Steps to Reproduce")
                 .compoundListSectionHeader()
-        } footer: {
-            Text(L10n.screenBugReportEditorDescription)
-                .compoundListSectionFooter()
         }
     }
     
     private var expectedSection: some View {
         Section {
             ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
-                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                    kind: .textField(text: $context.expectedResults, axis: .horizontal))
                 .lineLimit(4, reservesSpace: true)
                 .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
             Text("Expected Result")
                 .compoundListSectionHeader()
-        } footer: {
-            Text(L10n.screenBugReportEditorDescription)
-                .compoundListSectionFooter()
         }
     }
     
     private var actualResultSection: some View {
         Section {
             ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
-                    kind: .textField(text: $context.reportText, axis: .horizontal))
+                    kind: .textField(text: $context.actualResult, axis: .horizontal))
                 .lineLimit(4, reservesSpace: true)
-                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
             Text("Actual Result")
                 .compoundListSectionHeader()
-        } footer: {
-            Text(L10n.screenBugReportEditorDescription)
-                .compoundListSectionFooter()
         }
     }
     
     private var diagnosticLogsSection: some View {
         Section {
-            ListRow(label: .plain(title: L10n.screenBugReportEditorPlaceholder),
+            ListRow(label: .plain(title: context.diagnosticText),
                     kind: .label)
                 .lineLimit(4, reservesSpace: true)
-                .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
             Text("Diagnostics")
                 .compoundListSectionHeader()
@@ -120,8 +107,7 @@ struct BugPreflightScreen: View {
             Button(L10n.actionSend) {
 //                context.send(viewAction: .submit)
             }
-            .disabled(context.reportText.count < 5)
-//            .disabled(context.viewState.shouldDisableInteraction)
+            .disabled(context.summary.count < 5)
         }
     }
 }

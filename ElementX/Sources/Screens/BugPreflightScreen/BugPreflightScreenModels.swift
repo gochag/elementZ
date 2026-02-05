@@ -14,7 +14,12 @@ struct BugPreflightScreenViewState: BindableState {
 }
 
 struct BugPreflightScreenViewStateBindings {
-    var reportText: String
+    var summary: String = ""
+    var steps: String = ""
+    var expectedResults: String = ""
+    var actualResult: String = ""
+    var diagnosticText: String = ""
+    var deviceDiagnostics: DeviceDiagnostics?
 }
 
 enum BugPreflightScreenViewActions { }
