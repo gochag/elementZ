@@ -46,7 +46,11 @@ class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
     func clearRoute(animated: Bool) { }
     
     private func presentBugReportScreen() {
-        let params = BugPreflightScreenCoordinatorParameters(hideProfiles: true)
+        let textRedacting = PrivacyRedactor()
+        let diagnosticsProviding = SystemDiagnosticsProvider()
+        
+        let params = BugPreflightScreenCoordinatorParameters(diagnosticsProviding: diagnosticsProviding, textRedacting: textRedacting)
+        
         let coordinator = BugPreflightScreenCoordinator(parameters: params)
         coordinator.actions.sink { [weak self] action in
             guard let self else { return }

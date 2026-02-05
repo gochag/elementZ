@@ -10,15 +10,20 @@ import Combine
 typealias BugPreflightScreenViewModelType = StateStoreViewModelV2<BugPreflightScreenViewState, BugPreflightScreenViewActions>
 
 final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPreflightScreenViewModelProtocol {
+    private let diagnosticsProviding: DiagnosticsProviding
+    private let textRedacting: TextRedacting
     private let actionsSubject: PassthroughSubject<BugPreflightScreenViewModelAction, Never> = .init()
     
     var actions: AnyPublisher<BugPreflightScreenViewModelAction, Never> {
         actionsSubject.eraseToAnyPublisher()
     }
     
-    init() {
+    init(with param: BugPreflightScreenCoordinatorParameters) {
         let bindings = BugPreflightScreenViewStateBindings(reportText: "")
         let state = BugPreflightScreenViewState(bindings: bindings)
+        self.diagnosticsProviding = param.diagnosticsProviding
+        self.textRedacting = param.textRedacting
+        
         super.init(initialViewState: state)
     }
 }

@@ -14,7 +14,8 @@ enum BugPreflightScreenCoordinatorAction {
 }
 
 struct BugPreflightScreenCoordinatorParameters {
-    let hideProfiles: Bool
+    let diagnosticsProviding: DiagnosticsProviding
+    let textRedacting: TextRedacting
 }
 
 final class BugPreflightScreenCoordinator: CoordinatorProtocol {
@@ -29,7 +30,7 @@ final class BugPreflightScreenCoordinator: CoordinatorProtocol {
     
     init(parameters: BugPreflightScreenCoordinatorParameters) {
         self.parameters = parameters
-        viewModel = BugPreflightScreenViewModel()
+        viewModel = BugPreflightScreenViewModel(with: parameters)
     }
     
     // MARK: - Public
