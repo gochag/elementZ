@@ -9,7 +9,7 @@ import Compound
 import SwiftUI
 
 struct BugPreflightScreen: View {
-    /* Не стал добавлять в ресурсы. В идеале нужно туда добавить */
+    /** Не стал добавлять в ресурсы. В идеале нужно туда добавить */
     enum Texts {
         static let summary = "Summary"
         static let stepsToReproduce = "Steps to Reproduce"

@@ -13,7 +13,7 @@ import XCTest
 @MainActor
 final class DeviceDiagnosticsTests: XCTestCase {
     func testFormattedOutputIsDeterministic() {
-        let fixedDate = Date(timeIntervalSince1970: 1704067278)
+        let fixedDate = Date(timeIntervalSince1970: 1_704_067_278)
         let diagnostics = DeviceDiagnostics(appVersion: "1.0.0 (123)",
                                             deviceModel: "iPhone (iPhone15,2)",
                                             osVersion: "iOS 17.2",
