@@ -7,6 +7,7 @@
 //
 
 import Compound
+import MatrixRustSDK
 import SwiftUI
 
 struct RoomDetailsScreen: View {
@@ -329,16 +330,21 @@ struct RoomDetailsScreen: View {
 // MARK: - Previews
 
 struct RoomDetailsScreen_Previews: PreviewProvider, TestablePreview {
-    static let genericRoomViewModel = makeGenericRoomViewModel()
+    static let genericWorldReadableRoomViewModel = makeGenericRoomViewModel(historyVisibility: .worldReadable)
+    static let genericJoinedRoomViewModel = makeGenericRoomViewModel(historyVisibility: .joined)
     static let simpleRoomViewModel = makeSimpleRoomViewModel()
     static let dmRoomViewModel = makeDMViewModel(verificationState: .notVerified)
     static let dmRoomVerifiedViewModel = makeDMViewModel(verificationState: .verified)
     static let dmRoomVerificationViolationViewModel = makeDMViewModel(verificationState: .verificationViolation)
     
     static var previews: some View {
-        RoomDetailsScreen(context: genericRoomViewModel.context)
-            .snapshotPreferences(expect: genericRoomViewModel.context.observe(\.viewState.permalink).map { $0 != nil })
-            .previewDisplayName("Generic Room")
+        RoomDetailsScreen(context: genericJoinedRoomViewModel.context)
+            .snapshotPreferences(expect: genericJoinedRoomViewModel.context.observe(\.viewState.permalink).map { $0 != nil })
+            .previewDisplayName("Generic Room - Joined History Visibility")
+        
+        RoomDetailsScreen(context: genericWorldReadableRoomViewModel.context)
+            .snapshotPreferences(expect: genericWorldReadableRoomViewModel.context.observe(\.viewState.permalink).map { $0 != nil })
+            .previewDisplayName("Generic Room - World Readable History Visibility")
         
         RoomDetailsScreen(context: simpleRoomViewModel.context)
             .snapshotPreferences(expect: simpleRoomViewModel.context.observe(\.viewState.permalink).map { $0 != nil })
@@ -357,7 +363,8 @@ struct RoomDetailsScreen_Previews: PreviewProvider, TestablePreview {
             .previewDisplayName("DM Room Verification Violation")
     }
     
-    private static func makeGenericRoomViewModel() -> RoomDetailsScreenViewModel {
+    private static func makeGenericRoomViewModel(historyVisibility: RoomHistoryVisibility) -> RoomDetailsScreenViewModel {
+        ServiceLocator.shared.settings.enableKeyShareOnInvite = true
         ServiceLocator.shared.settings.knockingEnabled = true
         let knockRequests: [KnockRequestProxyMock] = [.init()]
         
@@ -381,6 +388,7 @@ struct RoomDetailsScreen_Previews: PreviewProvider, TestablePreview {
                                                   isDirect: false,
                                                   isEncrypted: true,
                                                   canonicalAlias: "#alias:domain.com",
+                                                  historyVisibility: historyVisibility,
                                                   members: members,
                                                   knockRequestsState: .loaded(knockRequests),
                                                   joinRule: .knock))
@@ -400,6 +408,7 @@ struct RoomDetailsScreen_Previews: PreviewProvider, TestablePreview {
     }
     
     private static func makeSimpleRoomViewModel() -> RoomDetailsScreenViewModel {
+        ServiceLocator.shared.settings.enableKeyShareOnInvite = true
         ServiceLocator.shared.settings.knockingEnabled = true
         let knockRequests: [KnockRequestProxyMock] = [.init()]
         
@@ -429,6 +438,8 @@ struct RoomDetailsScreen_Previews: PreviewProvider, TestablePreview {
     }
     
     private static func makeDMViewModel(verificationState: UserIdentityVerificationState) -> RoomDetailsScreenViewModel {
+        ServiceLocator.shared.settings.enableKeyShareOnInvite = true
+        
         let members: [RoomMemberProxyMock] = [
             .mockMe,
             .mockDan
