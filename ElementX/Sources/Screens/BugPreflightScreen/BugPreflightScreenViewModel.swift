@@ -17,6 +17,7 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     private let userIndicatorController: UserIndicatorControllerProtocol
     private let actionsSubject: PassthroughSubject<BugPreflightScreenViewModelAction, Never> = .init()
     
+    private var diagnosticsTask: Task<Void, Never>?
     var actions: AnyPublisher<BugPreflightScreenViewModelAction, Never> {
         actionsSubject.eraseToAnyPublisher()
     }
@@ -34,16 +35,21 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
         setupBindings()
     }
     
+    deinit {
+        diagnosticsTask?.cancel()
+    }
+    
     // MARK: Override function
     
     override func process(viewAction: BugPreflightScreenViewActions) {
+        let report = formatReport()
+        state.bindings.reportForSharing = textRedacting.redact(report)
+        
         switch viewAction {
         case .copyClipboard:
-            UIPasteboard.general.string = state.bindings.diagnosticText
+            UIPasteboard.general.string = state.bindings.reportForSharing
             userIndicatorController.submitIndicator(UserIndicator(title: "Copied", iconName: "checkmark"))
         case .share:
-            let report = formatReport()
-            state.bindings.reportForSharing = textRedacting.redact(report)
             state.bindings.showShareSheet = true
         }
     }
@@ -55,16 +61,14 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     }
     
     private func diagnosticsData() {
-        Task {
-            guard let result = try? await diagnosticsProviding.collectDiagnostics() else {
-                MXLog.error("Failed to collect diagnostics")
-                return
-            }
+        diagnosticsTask = Task {
+            let result = await diagnosticsProviding.collectDiagnostics()
             let user = clientProxy.userID
             let homeserver = clientProxy.homeserver
             let deviceID = clientProxy.deviceID ?? "no data"
             
-            let text = """
+            guard !Task.isCancelled else { return }
+            state.bindings.diagnosticText = """
             [user] \(user)
             [homeserver] \(homeserver)
             [deviceID] \(deviceID)
@@ -75,7 +79,6 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
             [App Version]: \(result.appVersion)
             [Timestamp]: \(result.formatted())
             """
-            state.bindings.diagnosticText = text
         }
     }
     

@@ -174,7 +174,7 @@ struct SettingsScreen: View {
                         })
                         .accessibilityIdentifier(A11yIdentifiers.settingsScreen.reportBug)
                 
-                ListRow(label: .default(title: L10n.commonReportAProblem,
+                ListRow(label: .default(title: "Test task: Report a problem",
                                         icon: \.chatProblem),
                         kind: .navigationLink {
                             context.send(viewAction: .reportBugPreflight)

@@ -9,6 +9,17 @@ import Compound
 import SwiftUI
 
 struct BugPreflightScreen: View {
+    /* Не стал добавлять в ресурсы. В идеале нужно туда добавить */
+    enum Texts {
+        static let summary = "Summary"
+        static let stepsToReproduce = "Steps to Reproduce"
+        static let expectedResult = "Expected Result"
+        static let actualResult = "Actual Result"
+        static let diagnostics = "Diagnostics"
+        static let share = "Share"
+        static let copy = "Copy"
+    }
+    
     @Bindable var context: BugPreflightScreenViewModel.Context
     
     var body: some View {
@@ -34,7 +45,7 @@ struct BugPreflightScreen: View {
                     kind: .textField(text: $context.summary, axis: .horizontal))
                 .lineLimit(4, reservesSpace: true)
         } header: {
-            Text("Summary")
+            Text(Texts.summary)
                 .compoundListSectionHeader()
         } footer: {
             Text(L10n.screenBugReportEditorDescription)
@@ -48,7 +59,7 @@ struct BugPreflightScreen: View {
                     kind: .textField(text: $context.steps, axis: .vertical))
                 .lineLimit(4, reservesSpace: true)
         } header: {
-            Text("Steps to Reproduce")
+            Text(Texts.stepsToReproduce)
                 .compoundListSectionHeader()
         }
     }
@@ -60,7 +71,7 @@ struct BugPreflightScreen: View {
                 .lineLimit(4, reservesSpace: true)
                 .accessibilityIdentifier(A11yIdentifiers.bugReportScreen.report)
         } header: {
-            Text("Expected Result")
+            Text(Texts.expectedResult)
                 .compoundListSectionHeader()
         }
     }
@@ -71,7 +82,7 @@ struct BugPreflightScreen: View {
                     kind: .textField(text: $context.actualResult, axis: .horizontal))
                 .lineLimit(4, reservesSpace: true)
         } header: {
-            Text("Actual Result")
+            Text(Texts.actualResult)
                 .compoundListSectionHeader()
         }
     }
@@ -82,28 +93,28 @@ struct BugPreflightScreen: View {
                     kind: .label)
                 .lineLimit(4, reservesSpace: true)
         } header: {
-            Text("Diagnostics")
+            Text(Texts.diagnostics)
                 .compoundListSectionHeader()
         }
     }
     
     private var buttonSection: some View {
         Section {
-                ListRow(label: .action(title: "Share", systemIcon: .squareAndArrowUp),
-                        kind: .button {
-                            context.send(viewAction: .share)
-                        })
+            ListRow(label: .action(title: Texts.share, systemIcon: .squareAndArrowUp),
+                    kind: .button {
+                        context.send(viewAction: .share)
+                    })
                 
-                ListRow(label: .action(title: "Copy", systemIcon: .documentOnDocument),
-                        kind: .button {
-                            context.send(viewAction: .copyClipboard)
-                        })
-            }
+            ListRow(label: .action(title: Texts.copy, systemIcon: .documentOnDocument),
+                    kind: .button {
+                        context.send(viewAction: .copyClipboard)
+                    })
+        }
     }
     
     @ViewBuilder
     private var shareSheet: some View {
-        let report = "asdasdasd"
+        let report = context.reportForSharing
         AppActivityView(activityItems: [report])
             .edgesIgnoringSafeArea(.bottom)
             .presentationDetents([.medium, .large])

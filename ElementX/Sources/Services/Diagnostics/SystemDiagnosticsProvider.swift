@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol DiagnosticsProviding {
-    func collectDiagnostics() async throws -> DeviceDiagnostics
+    func collectDiagnostics() async -> DeviceDiagnostics
 }
 
 final class SystemDiagnosticsProvider: DiagnosticsProviding {
-    func collectDiagnostics() async throws -> DeviceDiagnostics {
+    func collectDiagnostics() async -> DeviceDiagnostics {
         DeviceDiagnostics(appVersion: appVersion,
                           deviceModel: deviceModel,
                           osVersion: osVersion,

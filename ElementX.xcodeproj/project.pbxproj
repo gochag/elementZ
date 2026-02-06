@@ -1079,6 +1079,8 @@
 		B9777E452F34F47700D60548 /* SystemDiagnosticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9777E442F34F47500D60548 /* SystemDiagnosticsProvider.swift */; };
 		B9777E492F34F49100D60548 /* DeviceDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9777E482F34F48F00D60548 /* DeviceDiagnostics.swift */; };
 		B9777E4D2F35135700D60548 /* TextRedacting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9777E4C2F35135700D60548 /* TextRedacting.swift */; };
+		B9777E532F35F97800D60548 /* DeviceDiagnosticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9777E512F35F7AD00D60548 /* DeviceDiagnosticsTests.swift */; };
+		B9777E542F35F98300D60548 /* PrivacyRedactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9777E4F2F35F7A300D60548 /* PrivacyRedactorTests.swift */; };
 		B98A20A093A4FB785BFCCA53 /* BugReportScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBD9C2B9A5479526920399 /* BugReportScreenCoordinator.swift */; };
 		B9A8C34A00D03094C0CF56F3 /* MediaUploadPreviewScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FABD73FD8086EFAB699F42 /* MediaUploadPreviewScreenViewModelTests.swift */; };
 		B9CB30FED3E29D2036EA3FCC /* DeveloperOptionsScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C4E7B46099462F12000C91 /* DeveloperOptionsScreenViewModelProtocol.swift */; };
@@ -2588,6 +2590,8 @@
 		B9777E442F34F47500D60548 /* SystemDiagnosticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDiagnosticsProvider.swift; sourceTree = "<group>"; };
 		B9777E482F34F48F00D60548 /* DeviceDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiagnostics.swift; sourceTree = "<group>"; };
 		B9777E4C2F35135700D60548 /* TextRedacting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRedacting.swift; sourceTree = "<group>"; };
+		B9777E4F2F35F7A300D60548 /* PrivacyRedactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyRedactorTests.swift; sourceTree = "<group>"; };
+		B9777E512F35F7AD00D60548 /* DeviceDiagnosticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDiagnosticsTests.swift; sourceTree = "<group>"; };
 		B99E13633862847D8B7E2815 /* StartChatScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatScreenModels.swift; sourceTree = "<group>"; };
 		BA241DEEF7C8A7181C0AEDC9 /* UserPreferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceTests.swift; sourceTree = "<group>"; };
 		BA257D747DD7E6FFA5C2BE2D /* LinkNewDeviceServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkNewDeviceServiceMock.swift; sourceTree = "<group>"; };
@@ -4885,6 +4889,8 @@
 				7583EAC171059A86B767209F /* MediaProvider */,
 				7DBC911559934065993A5FF4 /* NotificationManager */,
 				1C62F5382CC9D9F7DCEC344A /* UserDiscoveryService */,
+				B9777E4F2F35F7A300D60548 /* PrivacyRedactorTests.swift */,
+				B9777E512F35F7AD00D60548 /* DeviceDiagnosticsTests.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -7769,6 +7775,7 @@
 				86675910612A12409262DFBD /* SessionVerificationStateMachineTests.swift in Sources */,
 				755727E0B756430DFFEC4732 /* SessionVerificationViewModelTests.swift in Sources */,
 				494970EA811FE4D93AC68482 /* SettingsScreenViewModelTests.swift in Sources */,
+				B9777E532F35F97800D60548 /* DeviceDiagnosticsTests.swift in Sources */,
 				C797C0B4CF45C66CD1921252 /* SoftLogoutScreenViewModelTests.swift in Sources */,
 				7624B61D0A3EFEC69C666609 /* SpaceAddRoomsScreenViewModelTests.swift in Sources */,
 				920DC020F18ABC88175114D3 /* SpaceListScreenViewModelTests.swift in Sources */,
@@ -7785,6 +7792,7 @@
 				8E650379587C31D7912ED67B /* UNNotification+Creator.swift in Sources */,
 				AF33B9044498211C3D82F1E1 /* UNTextInputNotificationResponse+Creator.swift in Sources */,
 				20C16A3F718802B0E4A19C83 /* URLComponentsTests.swift in Sources */,
+				B9777E542F35F98300D60548 /* PrivacyRedactorTests.swift in Sources */,
 				49BBEC46D523BF6A41400048 /* URLTests.swift in Sources */,
 				8D3E1FADD78E72504DE0E402 /* UserAgentBuilderTests.swift in Sources */,
 				BE011C4473B9A8F12CBFE92A /* UserDetailsEditScreenViewModelTests.swift in Sources */,

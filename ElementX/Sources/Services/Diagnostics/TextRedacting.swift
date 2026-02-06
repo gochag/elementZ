@@ -15,9 +15,9 @@ final class PrivacyRedactor: TextRedacting {
     // MARK: - Placeholders
     
     private enum Placeholder {
-        static let email = ""
-        static let url = ""
-        static let matrixID = ""
+        static let email = "[REDACTED_EMAIL]"
+        static let url = "[REDACTED_URL]"
+        static let matrixID = "[REDACTED_MATRIX_ID]"
     }
     
     // MARK: - Patterns
