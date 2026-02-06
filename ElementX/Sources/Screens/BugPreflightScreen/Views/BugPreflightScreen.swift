@@ -20,6 +20,7 @@ struct BugPreflightScreen: View {
             diagnosticLogsSection
             buttonSection
         }
+        .popover(isPresented: $context.showShareSheet) { shareSheet }
         .scrollDismissesKeyboard(.immediately)
         .compoundList()
         .navigationTitle(L10n.commonReportAProblem)
@@ -91,12 +92,13 @@ struct BugPreflightScreen: View {
         Section {
             ListRow(label: .action(title: "Share", systemIcon: .squareAndArrowUp),
                     kind: .button(action: {
+                        context.send(viewAction: .share)
                         MXLog.debug("Share")
                     }))
             
             ListRow(label: .action(title: "Copy", systemIcon: .documentOnDocument),
                     kind: .button(action: {
-                        MXLog.debug("Copy")
+                        context.send(viewAction: .copyClipboard)
                     }))
         }
     }
@@ -108,6 +110,24 @@ struct BugPreflightScreen: View {
 //                context.send(viewAction: .submit)
             }
             .disabled(context.summary.count < 5)
+        }
+    }
+    
+    @ViewBuilder
+    private var shareSheet: some View {
+        let report = "asdasdasd"
+        AppActivityView(activityItems: [report])
+            .edgesIgnoringSafeArea(.bottom)
+            .presentationDetents([.medium, .large])
+            .presentationCompactAdaptation(shareSheetCompactPresentation)
+            .presentationDragIndicator(.hidden)
+    }
+    
+    private var shareSheetCompactPresentation: PresentationAdaptation {
+        if #available(iOS 26.0, *) {
+            .none // ShareLinks use a popover presentation on iOS 26, let it match that.
+        } else {
+            .sheet
         }
     }
 }

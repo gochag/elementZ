@@ -21,6 +21,7 @@ struct BugPreflightFlowCoordinatorParameters {
 
     let presentationMode: PresentationMode
     let clientProxy: ClientProxyProtocol
+    let userIndicatorController: UserIndicatorControllerProtocol
 }
 
 class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
@@ -52,7 +53,8 @@ class BugPreflightFlowCoordinator: FlowCoordinatorProtocol {
         
         let params = BugPreflightScreenCoordinatorParameters(clientProxy: parameters.clientProxy,
                                                              diagnosticsProviding: diagnosticsProviding,
-                                                             textRedacting: textRedacting)
+                                                             textRedacting: textRedacting,
+                                                             userIndicatorController: parameters.userIndicatorController)
         
         let coordinator = BugPreflightScreenCoordinator(parameters: params)
         coordinator.actions.sink { [weak self] action in

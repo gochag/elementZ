@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SwiftUI
 
 typealias BugPreflightScreenViewModelType = StateStoreViewModelV2<BugPreflightScreenViewState, BugPreflightScreenViewActions>
 
@@ -13,6 +14,7 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     private let diagnosticsProviding: DiagnosticsProviding
     private let textRedacting: TextRedacting
     private let clientProxy: ClientProxyProtocol
+    private let userIndicatorController: UserIndicatorControllerProtocol
     private let actionsSubject: PassthroughSubject<BugPreflightScreenViewModelAction, Never> = .init()
     
     var actions: AnyPublisher<BugPreflightScreenViewModelAction, Never> {
@@ -26,6 +28,7 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
         diagnosticsProviding = param.diagnosticsProviding
         textRedacting = param.textRedacting
         clientProxy = param.clientProxy
+        userIndicatorController = param.userIndicatorController
         
         super.init(initialViewState: state)
         setupBindings()
@@ -56,6 +59,31 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
             [Timestamp]: \(result.formatted())
             """
             state.bindings.diagnosticText = text
+        }
+    }
+    
+    private func formatReport() -> String {
+        """
+        ## Bug Report
+        
+        **Summary:** \(state.bindings.summary)
+        **Steps:** \(state.bindings.steps)
+        **Expected:** \(state.bindings.expectedResults)
+        **Actual:** \(state.bindings.actualResult)
+        
+        ---
+        **Diagnostics:**
+        \(state.bindings.diagnosticText)
+        """
+    }
+    
+    override func process(viewAction: BugPreflightScreenViewActions) {
+        switch viewAction {
+        case .copyClipboard:
+            UIPasteboard.general.string = state.bindings.diagnosticText
+            userIndicatorController.submitIndicator(UserIndicator(title: "Copied", iconName: "checkmark"))
+        case .share:
+            state.bindings.showShareSheet = true
         }
     }
 }

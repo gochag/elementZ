@@ -14,6 +14,7 @@ struct BugPreflightScreenViewState: BindableState {
 }
 
 struct BugPreflightScreenViewStateBindings {
+    var showShareSheet = false
     var summary = ""
     var steps = ""
     var expectedResults = ""
@@ -22,4 +23,7 @@ struct BugPreflightScreenViewStateBindings {
     var deviceDiagnostics: DeviceDiagnostics?
 }
 
-enum BugPreflightScreenViewActions { }
+enum BugPreflightScreenViewActions {
+    case copyClipboard
+    case share
+}
