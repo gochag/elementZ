@@ -34,18 +34,35 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
         setupBindings()
     }
     
+    // MARK: Override function
+    
+    override func process(viewAction: BugPreflightScreenViewActions) {
+        switch viewAction {
+        case .copyClipboard:
+            UIPasteboard.general.string = state.bindings.diagnosticText
+            userIndicatorController.submitIndicator(UserIndicator(title: "Copied", iconName: "checkmark"))
+        case .share:
+            let report = formatReport()
+            state.bindings.reportForSharing = textRedacting.redact(report)
+            state.bindings.showShareSheet = true
+        }
+    }
+    
+    // MARK: Private function
+
     private func setupBindings() {
         diagnosticsData()
     }
     
     private func diagnosticsData() {
         Task {
-            guard let result = try? await diagnosticsProviding.collectDiagnostics() else { return }
-            state.bindings.deviceDiagnostics = result
-            
+            guard let result = try? await diagnosticsProviding.collectDiagnostics() else {
+                MXLog.error("Failed to collect diagnostics")
+                return
+            }
             let user = clientProxy.userID
             let homeserver = clientProxy.homeserver
-            let deviceID = clientProxy.deviceID
+            let deviceID = clientProxy.deviceID ?? "no data"
             
             let text = """
             [user] \(user)
@@ -64,26 +81,14 @@ final class BugPreflightScreenViewModel: BugPreflightScreenViewModelType, BugPre
     
     private func formatReport() -> String {
         """
-        ## Bug Report
-        
-        **Summary:** \(state.bindings.summary)
-        **Steps:** \(state.bindings.steps)
-        **Expected:** \(state.bindings.expectedResults)
-        **Actual:** \(state.bindings.actualResult)
-        
+        ## Bug Report\n
+        **Summary:** \(state.bindings.summary)\n
+        **Steps:** \(state.bindings.steps)\n
+        **Expected:** \(state.bindings.expectedResults)\n
+        **Actual:** \(state.bindings.actualResult)\n
         ---
-        **Diagnostics:**
+        **Diagnostics:**\n
         \(state.bindings.diagnosticText)
         """
-    }
-    
-    override func process(viewAction: BugPreflightScreenViewActions) {
-        switch viewAction {
-        case .copyClipboard:
-            UIPasteboard.general.string = state.bindings.diagnosticText
-            userIndicatorController.submitIndicator(UserIndicator(title: "Copied", iconName: "checkmark"))
-        case .share:
-            state.bindings.showShareSheet = true
-        }
     }
 }

@@ -20,12 +20,11 @@ struct BugPreflightScreen: View {
             diagnosticLogsSection
             buttonSection
         }
-        .popover(isPresented: $context.showShareSheet) { shareSheet }
+        .sheet(isPresented: $context.showShareSheet) { shareSheet }
         .scrollDismissesKeyboard(.immediately)
         .compoundList()
         .navigationTitle(L10n.commonReportAProblem)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar { toolbar }
         .interactiveDismissDisabled()
     }
     
@@ -90,27 +89,16 @@ struct BugPreflightScreen: View {
     
     private var buttonSection: some View {
         Section {
-            ListRow(label: .action(title: "Share", systemIcon: .squareAndArrowUp),
-                    kind: .button(action: {
-                        context.send(viewAction: .share)
-                        MXLog.debug("Share")
-                    }))
-            
-            ListRow(label: .action(title: "Copy", systemIcon: .documentOnDocument),
-                    kind: .button(action: {
-                        context.send(viewAction: .copyClipboard)
-                    }))
-        }
-    }
-    
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .confirmationAction) {
-            Button(L10n.actionSend) {
-//                context.send(viewAction: .submit)
+                ListRow(label: .action(title: "Share", systemIcon: .squareAndArrowUp),
+                        kind: .button {
+                            context.send(viewAction: .share)
+                        })
+                
+                ListRow(label: .action(title: "Copy", systemIcon: .documentOnDocument),
+                        kind: .button {
+                            context.send(viewAction: .copyClipboard)
+                        })
             }
-            .disabled(context.summary.count < 5)
-        }
     }
     
     @ViewBuilder

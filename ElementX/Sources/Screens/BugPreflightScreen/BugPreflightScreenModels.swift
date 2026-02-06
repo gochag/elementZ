@@ -20,7 +20,7 @@ struct BugPreflightScreenViewStateBindings {
     var expectedResults = ""
     var actualResult = ""
     var diagnosticText = ""
-    var deviceDiagnostics: DeviceDiagnostics?
+    var reportForSharing = ""
 }
 
 enum BugPreflightScreenViewActions {
